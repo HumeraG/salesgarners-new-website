@@ -1,0 +1,42 @@
+.adm{min-height:100vh;display:grid;grid-template-columns:240px 1fr;background:var(--bg)}
+.adm aside{border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+.adm aside a,.adm aside button{display:block;padding:10px 12px;border-radius:10px;color:var(--muted);font-weight:600;font-size:14.5px;text-align:left;width:100%}
+.adm aside a:hover,.adm aside button:hover{background:rgba(255,255,255,.05);color:#fff}
+.adm main{padding:32px clamp(16px,3vw,40px);min-width:0}
+.adm h1{font-size:30px;margin-bottom:24px}
+.adm .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:32px}
+.adm .stat{padding:20px;border-radius:16px;border:1px solid var(--line);background:rgba(17,22,58,.7)}
+.adm .stat b{display:block;font:800 32px var(--display)}
+.adm .stat span{color:var(--muted);font-size:13px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font:600 11px var(--mono);letter-spacing:.08em;color:var(--muted);padding:10px;border-bottom:1px solid var(--line2);white-space:nowrap}
+.tbl td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:hover td{background:rgba(255,255,255,.02)}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:rgba(17,22,58,.5)}
+.badge2{display:inline-block;padding:3px 8px;border-radius:6px;font:700 10.5px var(--mono);background:rgba(109,67,231,.25);color:#D0C2FF}
+.badge2.PILOT{background:rgba(52,211,153,.15);color:var(--mint)}
+.badge2.WHITEPAPER{background:rgba(56,189,248,.15);color:#7DD3FC}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.adm select,.adm input[type=text],.adm input[type=url],.adm input[type=date],.adm input[type=number],.adm textarea{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line2);color:var(--fg);font:500 14px var(--body)}
+.adm textarea{width:100%;min-height:320px;font-family:var(--mono);font-size:13px}
+.adm .ef{display:grid;gap:16px;max-width:900px}
+.adm .ef label{display:grid;gap:6px;font-size:13px;font-weight:700}
+.adm .ef input[type=text],.adm .ef input[type=url]{width:100%}
+.adm .muted{color:var(--muted)}
+.login{min-height:100vh;display:grid;place-items:center;padding:20px;background:var(--bg)}
+.login form{width:min(380px,100%);display:grid;gap:14px;padding:32px;border-radius:24px;background:var(--surface);border:1px solid var(--line2)}
+.login input{padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line2);color:var(--fg);font:500 15px var(--body)}
+@media (max-width:800px){.adm{grid-template-columns:1fr}.adm aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--line)}.adm aside a,.adm aside button{width:auto}}
+
+.adm select{color-scheme:dark;cursor:pointer}
+.adm select option{background:#11163A;color:#F4F3FF}
+.adm select option:checked{background:#6D43E7;color:#fff}
+.adm textarea.plain{font-family:var(--body);font-size:15px;line-height:1.7;min-height:360px}
+.adm .ef label > .muted{font-size:12.5px;line-height:1.5}
+.adm aside .logo{flex-direction:column;align-items:flex-start;gap:8px}
+.adm aside .brand-logo{height:24px}
+.adm .del{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;font:600 13px var(--body);color:#FCA5A5;border:1px solid rgba(248,113,113,.35);background:rgba(248,113,113,.08);transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
+.adm .del:hover{background:rgba(248,113,113,.18);border-color:rgba(248,113,113,.6);color:#fff}
+.adm .del:focus-visible{outline:2px solid #FCA5A5;outline-offset:2px}
+.adm .del.big{padding:10px 16px;font-size:14px}
+.adm td .acts{display:flex;gap:12px;align-items:center}

@@ -1,0 +1,158 @@
+/*
+ * Light theme ("Aurora"). Dark stays the default and is defined in globals.css.
+ * html[data-theme="light"] is set by the head script in app/(site)/layout.js and by ThemeToggle.
+ * Admin pages never get the attribute, so they stay dark.
+ */
+
+/* Shared tokens used by both themes */
+:root{--err:#FCA5A5;--warn-ink:#FDE68A;--tint1:rgba(255,255,255,.04);--tint2:rgba(255,255,255,.06)}
+
+html[data-theme="light"]{
+  --bg:#FBFAFF; --bg2:rgba(243,239,252,.72); --surface:#FFFFFF; --surface2:#F3F0FB;
+  --line:rgba(14,11,26,.08); --line2:rgba(14,11,26,.15);
+  --fg:#151032; --muted:#55516F; --dim:#7A7693;
+  --lilac:#6A2FD0;
+  --gradtext:linear-gradient(100deg,#6D43E7 0%,#C930B5 35%,#2F86D9 65%,#6D43E7 100%);
+  --err:#C81E1E; --warn-ink:#92400E; --tint1:rgba(14,11,26,.035); --tint2:rgba(14,11,26,.06);
+  color-scheme:light;
+  background:var(--bg);
+}
+html[data-theme="light"] body{background:transparent;color:var(--fg)}
+
+/* smooth colour change while switching (class added for ~0.5s by ThemeToggle) */
+html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{transition:background-color .45s ease,color .45s ease,border-color .45s ease,fill .45s ease!important}
+
+/* ---------- Aurora background: drifting brand-colour clouds (light only) ---------- */
+.aurora{display:none}
+html[data-theme="light"] .aurora{display:block;position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;border-radius:50%;will-change:transform}
+.aurora i:nth-child(1){width:80vw;height:70vw;max-width:1100px;max-height:950px;left:-22vw;top:-20vw;background:radial-gradient(closest-side,rgba(126,62,228,.24),rgba(126,62,228,.10) 55%,transparent);animation:aur1 22s ease-in-out infinite alternate}
+.aurora i:nth-child(2){width:70vw;height:62vw;max-width:980px;max-height:860px;right:-24vw;top:2vh;background:radial-gradient(closest-side,rgba(47,159,239,.20),rgba(47,159,239,.08) 55%,transparent);animation:aur2 26s ease-in-out infinite alternate}
+.aurora i:nth-child(3){width:66vw;height:54vw;max-width:900px;max-height:760px;left:20vw;bottom:-24vw;background:radial-gradient(closest-side,rgba(213,53,189,.16),rgba(213,53,189,.06) 55%,transparent);animation:aur1 30s ease-in-out infinite alternate-reverse}
+@keyframes aur1{to{transform:translate(8vw,6vh) scale(1.12)}}
+@keyframes aur2{to{transform:translate(-7vw,8vh) scale(1.08)}}
+
+/* ---------- Logo: dark-text version on light ---------- */
+.brand-logo.ink{display:none}
+html[data-theme="light"] .brand-logo.rev{display:none}
+html[data-theme="light"] .brand-logo.ink{display:block}
+
+/* ---------- Text that sits on gradients / dark panels stays white ---------- */
+html[data-theme="light"] :is(.btn.p,.promo,.tab.on,.score,.badge.gd,.it:not(.ghost),.gvis .regions span.on,.cta,.band,.svc .card.feat,.ckbig,.wp .doc,.soc a:hover,.soc2 a:hover,.arw:hover,.acc details[open] summary .pm,.dd a:hover .ic,.cover,.case .cov,.tcard .ph,.pub .mono-tile,.row .av,.who2 .av,.stand-info button.on,.chip-on,.ttg button[aria-pressed="true"]){color:#fff}
+
+/* X-Engage panel keeps its dark look as a contrast island */
+html[data-theme="light"] .xpanel{--fg:#F4F3FF;--muted:#A7AECF;--dim:#6C7397;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.18);--lilac:#B79CFF;--tint1:rgba(255,255,255,.04);--tint2:rgba(255,255,255,.06);color:var(--fg);box-shadow:0 40px 80px -40px rgba(42,15,61,.55)}
+
+/* ---------- Header and menus ---------- */
+html[data-theme="light"] .nav.scrolled{background:rgba(251,250,255,.72);box-shadow:0 10px 30px -20px rgba(60,40,140,.35)}
+html[data-theme="light"] .menu > li > a,html[data-theme="light"] .menu > li > button{color:var(--muted)}
+html[data-theme="light"] .menu > li > a:hover,html[data-theme="light"] .menu > li > button:hover,html[data-theme="light"] .menu > li.open > button,html[data-theme="light"] .menu > li > a.active{color:var(--fg);background:var(--tint1)}
+html[data-theme="light"] .dd{background:rgba(255,255,255,.97);box-shadow:0 30px 60px -24px rgba(60,40,140,.35)}
+html[data-theme="light"] .dd a:hover{background:rgba(109,67,231,.08)}
+html[data-theme="light"] .dd a .ic{background:var(--tint2)}
+html[data-theme="light"] .mobile{background:rgba(251,250,255,.97)}
+html[data-theme="light"] .mbtn{background:rgba(255,255,255,.6)}
+html[data-theme="light"] .mbtn:hover{background:#fff}
+html[data-theme="light"] .ov{background:#F7F5FD}
+html[data-theme="light"] .ov .glw{background:rgba(126,62,228,.18)}
+html[data-theme="light"] .big a{color:var(--fg)}
+html[data-theme="light"] .big a:hover span,html[data-theme="light"] .big a:focus-visible span,html[data-theme="light"] .big a.act span{background-image:linear-gradient(100deg,#6D43E7,#C930B5)}
+html[data-theme="light"] .ov .col > a:hover,html[data-theme="light"] .ov .col > a.act{color:var(--fg)}
+
+/* ---------- Generic surfaces ---------- */
+html[data-theme="light"] .eyebrow{background:rgba(109,67,231,.09);border-color:rgba(109,67,231,.32);color:#5B2CC9}
+html[data-theme="light"] .btn.s{background:rgba(255,255,255,.55)}
+html[data-theme="light"] .btn.s:hover{background:#fff}
+html[data-theme="light"] .btn.p{box-shadow:0 10px 26px -10px rgba(109,67,231,.55)}
+html[data-theme="light"] :is(.hero,.phero.pv) .grid{background-image:linear-gradient(rgba(14,11,26,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(14,11,26,.05) 1px,transparent 1px)}
+html[data-theme="light"] .glow.a{background:rgba(126,62,228,.16)}
+html[data-theme="light"] .glow.b{background:rgba(213,53,189,.10)}
+html[data-theme="light"] .card{background:rgba(255,255,255,.7);border-color:rgba(255,255,255,.95);box-shadow:0 1px 0 rgba(14,11,26,.04),0 18px 40px -28px rgba(60,40,140,.35)}
+html[data-theme="light"] .card:hover{box-shadow:0 28px 56px -28px rgba(109,67,231,.45)}
+html[data-theme="light"] .card::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(126,62,228,.10),transparent 45%)}
+html[data-theme="light"] .card::after{background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(126,62,228,.6),transparent 50%)}
+html[data-theme="light"] .it.ghost{background:var(--tint2)}
+html[data-theme="light"] .ccard{background:rgba(255,255,255,.72);border-color:rgba(255,255,255,.95);box-shadow:0 18px 40px -28px rgba(60,40,140,.35)}
+html[data-theme="light"] .wp{background:linear-gradient(160deg,rgba(109,67,231,.12),rgba(255,255,255,.8) 60%)}
+html[data-theme="light"] :is(.met,.chart,.row,.chip,.tab,.cmp .res,.filepick){background:var(--tint1)}
+html[data-theme="light"] .tab.on{background:var(--grad)}
+html[data-theme="light"] .cmp .bad{background:rgba(255,255,255,.5)}
+html[data-theme="light"] .cmp .good{background:linear-gradient(160deg,rgba(109,67,231,.12),rgba(187,50,200,.07))}
+html[data-theme="light"] :is(.pill,.tag){background:rgba(109,67,231,.1);color:#5B2CC9}
+html[data-theme="light"] .pill.g{background:rgba(16,150,100,.1);color:#047857}
+html[data-theme="light"] .lg{background:rgba(255,255,255,.6)}
+html[data-theme="light"] .lg:hover{color:var(--fg);background:#fff}
+html[data-theme="light"] .step .n{color:#D8D1F2}
+html[data-theme="light"] .map{background:rgba(255,255,255,.6);border-color:rgba(255,255,255,.95)}
+html[data-theme="light"] .svc li{color:var(--fg)}
+html[data-theme="light"] .svc .card.feat{border-color:transparent}
+html[data-theme="light"] .svc .card.feat :is(p,li){color:#EDE6FF}
+html[data-theme="light"] .svc li .tick{background:rgba(109,67,231,.14)}
+html[data-theme="light"] .quote blockquote{color:var(--fg)}
+html[data-theme="light"] .hb .t{color:var(--fg)}
+html[data-theme="light"] .hb .tr{background:var(--tint2)}
+html[data-theme="light"] .sig .meter{background:rgba(255,255,255,.1)}
+html[data-theme="light"] .legal :is(p,li){color:#3C3857}
+html[data-theme="light"] .toc a:hover{color:var(--fg);background:var(--tint1)}
+html[data-theme="light"] .fgrid a:hover{color:var(--fg)}
+html[data-theme="light"] .modal{background:rgba(30,20,70,.35)}
+html[data-theme="light"] .modal .box{box-shadow:0 40px 80px -30px rgba(60,40,140,.45)}
+html[data-theme="light"] .toast{background:var(--fg);color:#fff}
+
+/* forms */
+html[data-theme="light"] .fld label{color:var(--fg)}
+html[data-theme="light"] :is(.fld input,.fld textarea,.fld select){background:rgba(255,255,255,.85)}
+html[data-theme="light"] :is(.fld input,.fld textarea):focus{background:#fff}
+html[data-theme="light"] .fld .err{color:var(--err)}
+html[data-theme="light"] .filepick{color:var(--fg)}
+
+/* floating chips over animations */
+html[data-theme="light"] :is(.chip.g-tick,.chip.g-evt,.gvis .regions span:not(.on),.pchip,.pvis .pcards span){background:rgba(255,255,255,.85);border-color:rgba(255,255,255,.95);box-shadow:0 16px 36px -20px rgba(60,40,140,.45)}
+html[data-theme="light"] :is(.g-tick small,.pchip small){color:#047857}
+
+/* footer */
+html[data-theme="light"] footer{background:rgba(241,238,250,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+
+/* ---------- Theme toggle (Light / Auto / Dark) ---------- */
+.ttg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:3px;border-radius:999px;border:1px solid var(--line2);background:var(--tint1)}
+.ttg .pill2{position:absolute;top:3px;bottom:3px;left:3px;width:calc((100% - 6px) / 3);border-radius:999px;background:var(--grad);box-shadow:0 6px 16px -6px rgba(109,67,231,.7);transition:transform .45s var(--ease),opacity .3s;opacity:0}
+.ttg[data-mode] .pill2{opacity:1}
+.ttg[data-mode="auto"] .pill2{transform:translateX(100%)}
+.ttg[data-mode="dark"] .pill2{transform:translateX(200%)}
+.ttg button{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 11px;border-radius:999px;font:700 12.5px var(--body);color:var(--muted);transition:color .3s}
+.ttg button:hover{color:var(--fg)}
+.ttg button[aria-pressed="true"]{color:#fff}
+.ttg svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+@media (max-width:1180px){.ttg button span{display:none}.ttg button{padding:7px 9px}}
+@media (max-width:420px){.mbtn .lbl{display:none}.mbtn{padding:5px;gap:0}.ttg button{padding:6px 7px}.nright{gap:8px}}
+
+@media (prefers-reduced-motion:reduce){.aurora i{animation:none}}
+
+/* Icons: white default strokes follow the text colour in light mode; lavender accents get a darker violet */
+html[data-theme="light"] svg[stroke="#fff"]{stroke:currentColor}
+html[data-theme="light"] :is(svg[stroke="#B79CFF"],svg[stroke="#D9CCFF"]){stroke:#6A2FD0}
+html[data-theme="light"] :is(.xpanel,.svc .card.feat,.cta,.band) :is(svg[stroke="#B79CFF"],svg[stroke="#D9CCFF"]){stroke:#fff}
+html[data-theme="light"] .xpanel svg[stroke="#D9CCFF"]{stroke:#D9CCFF}
+html[data-theme="light"] .it.ghost{color:var(--lilac)}
+html[data-theme="light"] .svc .card.feat li .tick{background:rgba(255,255,255,.2)}
+html[data-theme="light"] .pin span{box-shadow:0 4px 12px -4px rgba(60,40,140,.35);border:1px solid rgba(14,11,26,.08)}
+
+/* ---- Desktop navigation bar (matches salesgarners.com) + icon-only theme switch ---- */
+.ttg button span{display:none}
+.ttg button{padding:7px 9px}
+.dnav{display:none;align-items:center;gap:2px;margin-left:auto;margin-right:20px}
+.dnav>a,.dn-top{display:inline-flex;align-items:center;gap:6px;padding:10px 12px;border-radius:8px;font:600 15px var(--body);color:var(--fg);white-space:nowrap;transition:color .2s}
+.dnav>a:hover,.dnav>a.act,.dn:hover .dn-top,.dn:focus-within .dn-top,.dn-top.act{color:var(--lilac)}
+.dn{position:relative}
+.dn-top svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.dn:hover .dn-top svg,.dn:focus-within .dn-top svg{transform:rotate(180deg)}
+.dmenu{position:absolute;top:calc(100% - 2px);left:0;min-width:240px;padding:8px;border-radius:14px;background:var(--surface);border:1px solid var(--line2);box-shadow:0 24px 50px -20px rgba(0,0,0,.6);display:grid;gap:2px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s var(--ease),visibility .2s;z-index:80}
+.dn:hover .dmenu,.dn:focus-within .dmenu{opacity:1;visibility:visible;transform:none}
+.dmenu a{padding:10px 14px;border-radius:9px;font:600 14.5px var(--body);color:var(--muted);transition:background .2s,color .2s}
+.dmenu a:hover,.dmenu a.act{background:var(--tint2);color:var(--fg)}
+.dnav>a.act{box-shadow:inset 0 -2px 0 var(--lilac);border-radius:0}
+@media (min-width:1025px){
+  .dnav{display:flex}
+  .nav .wrap{max-width:1360px}
+}
+@media (max-width:1320px){.hide-md{display:none}}
