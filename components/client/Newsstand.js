@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Publications shown as fanned magazine covers. Hover or pick a name to bring one forward; auto-rotates.
 export default function Newsstand({ publications }) {
-  const [cur, setCur] = useState(2);
+  const [cur, setCur] = useState(0);
   const [step, setStep] = useState(150);
   const stand = useRef(null);
   const hover = useRef(false);

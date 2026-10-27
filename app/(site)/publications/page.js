@@ -2,7 +2,7 @@ import { SG } from '@/lib/content';
 import { PUB_DETAILS, PUB_SECTIONS, PUB_DISCLAIMER } from '@/lib/publications';
 import './publications.css';
 
-export const metadata = { title: 'Publications', description: 'Six independent B2B technology publications from SalesGarners: MarTech360Hub, TechMediaGlobal, HRTech360Hub, FinTech360Hub, SalesTech360Hub and Startup360Hub.' };
+export const metadata = { title: 'Publications', description: 'Six independent B2B technology publications from SalesGarners: TechMediaGlobal, MarTech360Hub, HRTech360Hub, FinTech360Hub, SalesTech360Hub and Startup360Hub.' };
 
 // [grid-column, grid-row] for the bento tiles on desktop
 const POS = { techmediaglobal: ['1 / span 2', '1 / span 2'], martech360hub: ['3 / span 2', '1'], hrtech360hub: ['3', '2'], fintech360hub: ['4', '2'], salestech360hub: ['2', '3'], startup360hub: ['3 / span 2', '3'] };

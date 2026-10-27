@@ -4,7 +4,7 @@ import SignalFunnel from '@/components/client/SignalFunnel';
 import Carousel from '@/components/client/Carousel';
 import { SG } from '@/lib/content';
 import { getCases } from '@/lib/data';
-import { Arrow, BtnP, BtnS, CaseCards, Cta, DatabaseSection, Head, NumberedSteps, Publications, Signals, SplitTitle, StatBand, Testimonials, Trusted } from '@/components/ui';
+import { Arrow, BtnP, BtnS, CaseCards, ServiceBadge, Cta, DatabaseSection, Head, NumberedSteps, Publications, Signals, SplitTitle, StatBand, Testimonials, Trusted } from '@/components/ui';
 
 export const revalidate = 300;
 
@@ -79,7 +79,7 @@ export default async function Home() {
         <div className="svc">
           {[...SG.services].sort((a, b) => (b.slug === 'lead-generation') - (a.slug === 'lead-generation')).map((s, i) => (
             <Link className={`card ${i ? '' : 'feat'}`} href={`/${s.slug}`} data-r="" key={s.slug}>
-              <div className="it" style={i ? undefined : { background: 'rgba(255,255,255,.15)' }}><Icon name={s.icon} size={26} /></div>
+              <ServiceBadge slug={s.slug} />
               <h3 className="h3">{s.short}</h3><p>{s.desc}</p>
               <ul>{s.bullets.map(b => <li key={b}><span className="tick"><Icon name="check" size={12} color="#D9CCFF" /></span>{b}</li>)}</ul>
               <span className="link more" style={i ? undefined : { color: '#fff' }}>Explore More <Arrow /></span>

@@ -1,5 +1,5 @@
 import Difference from '@/components/Difference';
-import { BtnP, CardsGrid, Cta, Head, NumberedSteps, PageHero, Testimonials } from '@/components/ui';
+import { BtnP, CardsGrid, Cta, Head, NumberedSteps, PageHero } from '@/components/ui';
 
 export const metadata = { title: 'Event-Based Lead Generation', description: 'Turn every event into a revenue opportunity with intent-rich, event-based lead generation.' };
 
@@ -29,7 +29,6 @@ export default function Page() {
         ]} />
       </div></section>
       <Difference />
-      <Testimonials />
       <Cta title="Ready to Get More Out of Your Next Event?" label="Start Building Pipeline" />
     </>
   );

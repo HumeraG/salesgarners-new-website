@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
-import { Tabs } from '@/components/client/Widgets';
 import { SG } from '@/lib/content';
 import fs from 'fs';
 import path from 'path';
 import { BtnP, Cta, Head, StatBand, Trusted, initials } from '@/components/ui';
-import ParticleShape from '@/components/client/ParticleShape';
+import SignalFlow from '@/components/client/SignalFlow';
+import MissionControl from '@/components/client/MissionControl';
 import OurStory from '@/components/OurStory';
 
 export const metadata = { title: 'About', description: 'SalesGarners helps B2B businesses grow faster by aligning sales and marketing through data driven strategies.' };
@@ -23,9 +23,7 @@ export default function About() {
           <p className="lead fadeup" style={{ animationDelay: '.16s' }}>We help B2B companies generate high quality leads, engage the right audience, and drive measurable pipeline impact.</p>
           <div className="btns fadeup" style={{ animationDelay: '.24s' }}><BtnP href="/contact-us">Start Now</BtnP></div>
         </div>
-        <ParticleShape shape="sg">
-          <div className="pcards">{[['Precision', 'Targeting'], ['Innovation', 'Driven'], ['Results', 'That Matter']].map(([a, b]) => <span key={a}>{a} <em>{b}</em></span>)}</div>
-        </ParticleShape>
+        <SignalFlow />
       </div></section>
 
       <Trusted />
@@ -40,14 +38,7 @@ export default function About() {
       </div></section>
 
       <section className="sec alt"><div className="wrap">
-        <Tabs labels={['Our Vision', 'Our Mission', 'Our Expertise']}>
-          <p className="lead" style={{ fontSize: 20, color: 'var(--fg)', maxWidth: 'none' }}>SalesGarners aspires to be a global leader in Sales and Marketing services, driving measurable growth for businesses across industries. We are committed to empowering our clients by enhancing their marketing &amp; sales funnels and achieving sustainable success.</p>
-          <p className="lead" style={{ fontSize: 20, color: 'var(--fg)', maxWidth: 'none' }}>With a team of dedicated professionals possessing profound expertise and a deep understanding of diverse business landscapes, we design tailored solutions to address each client’s unique needs. Our passion lies in fostering longterm relationships between our clients and their audiences through impactful and seamless digital campaigns.</p>
-          <div className="chips">
-            {SG.services.map(s => <Link className="chip" href={`/${s.slug}`} key={s.slug}><Icon name={s.icon} size={16} color="#B79CFF" /> {s.short}</Link>)}
-            <Link className="chip" href="/x-engage"><Icon name="activity" size={16} color="#B79CFF" /> X-Engage platform</Link>
-          </div>
-        </Tabs>
+        <MissionControl services={[...SG.services].sort((a, b) => (b.slug === 'lead-generation') - (a.slug === 'lead-generation'))} />
       </div></section>
 
       <OurStory />

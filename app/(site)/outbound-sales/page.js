@@ -1,6 +1,7 @@
 import { Icon } from '@/components/Icon';
 import { LINKS } from '@/lib/content';
-import { BtnP, CardsGrid, Compare, Cta, Head, NumberedSteps, PageHero, Testimonials, Trusted } from '@/components/ui';
+import FaqConsole from '@/components/client/FaqConsole';
+import { BtnP, CardsGrid, Compare, Cta, Head, NumberedSteps, PageHero, Trusted } from '@/components/ui';
 
 export const metadata = { title: 'Outbound Sales Program', description: 'Predictable pipeline and qualified sales meetings from a multi channel outbound engine powered by intent data.' };
 
@@ -11,12 +12,13 @@ const QUOTES = [
   ['Upcision', 'Founder', '"Setup was painless and the dashboard is genuinely intuitive. We started seeing actionable data within a day. The real-time alerts have been a game changer for our SMB sales motion."'],
 ];
 const FAQ = [
-  ['How quickly can we expect meetings?', 'Most clients start seeing qualified meetings booked within the first 3-4 weeks of engagement, once ICP mapping and outreach sequences are live.'],
-  ['Do you require long-term contracts?', 'No — our engagements are built around results, not lock-in periods. We\'ll walk you through flexible options during your strategy call.'],
-  ['What industries do you work with?', 'We specialize in B2B SaaS and tech companies.'],
-  ['How is this different from an in-house SDR?', 'You get a full outbound engine — ICP mapping, verified data, intent tracking, and SDR execution — without the hiring, training, and ramp-up time of building a team internally.'],
-  ['What do you need from us to get started?', 'Just a short onboarding call to align on your ICP, messaging, and calendar access — we handle the rest from there.'],
+  ['How quickly can we expect meetings?', 'Most clients see their first qualified meetings booked within 3–4 weeks, as soon as ICP mapping and outreach sequences go live.', 'meetings'],
+  ['Do you require long-term contracts?', 'No. Our engagements are built around results, not lock-in periods. We\u2019ll walk you through flexible options on your strategy call.', 'contracts'],
+  ['What industries do you work with?', 'We specialize in B2B SaaS and technology companies.', 'industries'],
+  ['How is this different from an in-house SDR team?', 'You get a complete outbound engine (ICP mapping, verified data, intent tracking and SDR execution) without hiring, training and ramping up a team yourself.', 'vs-inhouse-sdr'],
+  ['What do you need from us to get started?', 'Just a short onboarding call to align on your ICP, messaging and calendar access. We handle the rest.', 'onboarding'],
 ];
+const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 
 export default function Page() {
   return (
@@ -85,7 +87,6 @@ export default function Page() {
       </div></section>
 
       <Cta />
-      <Testimonials items={QUOTES} eb="Testimonials" title="What Our Clients Say" lead="" />
 
       <section className="sec"><div className="wrap split">
         <div className="stack" data-r="">
@@ -111,13 +112,10 @@ export default function Page() {
         </div>
       </div></section>
 
-      <section className="sec alt"><div className="wrap" style={{ maxWidth: 900 }}>
-        <Head title="Frequently Asked Questions" />
-        <div className="acc" data-r="">
-          {FAQ.map(([q, a], i) => (
-            <details key={q} open={i === 0}><summary>{q}<span className="pm"><Icon name="plus" size={14} /></span></summary><p className="ans">{a}</p></details>
-          ))}
-        </div>
+      <section className="sec alt" id="faqs" aria-label="FAQs"><div className="wrap">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
+        <Head eb="FAQs" title="Frequently Asked Questions" lead="Quick answers to what B2B teams ask us before starting an outbound program." />
+        <FaqConsole items={FAQ} ctaHref={LINKS.demo} />
       </div></section>
     </>
   );

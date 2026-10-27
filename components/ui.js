@@ -6,6 +6,7 @@ import Carousel from './client/Carousel';
 import Newsstand from './client/Newsstand';
 import RegionMap from './client/RegionMap';
 import ParticleShape from './client/ParticleShape';
+import CtaShell from '@/components/client/CtaShell';
 
 export const Arrow = () => <span className="ar">→</span>;
 export const initials = s => s.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
@@ -31,8 +32,8 @@ export function Head({ eb, title, lead, center = true }) {
   );
 }
 
-export function PageHero({ eb, title, lead, children, center = false, shape, chip }) {
-  const split = !!shape;
+export function PageHero({ eb, title, lead, children, center = false, shape, chip, visual }) {
+  const split = !!shape || !!visual;
   return (
     <section className={`phero ${center && !split ? 'c' : ''} ${split ? 'pv' : ''}`}>
       <div className="glow a" /><div className="glow b" />{split && <div className="grid" />}
@@ -41,7 +42,7 @@ export function PageHero({ eb, title, lead, children, center = false, shape, chi
         <h1 className="fadeup" style={{ animationDelay: '.08s' }}>{title}</h1>
         {lead && <p className="lead fadeup" style={{ animationDelay: '.16s' }}>{lead}</p>}
         {children && <div className="btns fadeup" style={{ animationDelay: '.24s' }}>{children}</div>}
-      </div>{split && <ParticleShape shape={shape} chip={chip} />}</div>
+      </div>{split && (visual || <ParticleShape shape={shape} chip={chip} />)}</div>
     </section>
   );
 }
@@ -113,18 +114,27 @@ export function Trusted({ title = 'Trusted by Leading Companies, Advertisers, an
 }
 
 export function Testimonials({ items = SG.testimonials, eb = 'Client Feedback', title = 'Hear from our Happy Partners', lead = 'We are always thinking of our customers so that the customer is satisfied with us.', stars = false }) {
+  // Continuous right-to-left scroll; pauses on hover/focus. The second copy is hidden from screen readers.
+  let base = items;
+  while (base.length < 6) base = base.concat(items);
+  const card = ([co, ro, q], k, copy) => (
+    <article className="card quote" key={`${copy}-${k}`} aria-hidden={copy ? 'true' : undefined}>
+      {stars ? <div className="stars">★★★★★</div> : <div className="qm">“</div>}
+      <blockquote>{q}</blockquote>
+      <div className="who2"><div className="av">{initials(co)}</div><div><b>{co}</b><small>{ro}</small></div></div>
+    </article>
+  );
   return (
     <section className="sec alt"><div className="wrap">
-      <Carousel eb={eb} title={title} lead={lead}>
-        {items.map(([co, ro, q]) => (
-          <article className="card quote" key={co + ro}>
-            {stars ? <div className="stars">★★★★★</div> : <div className="qm">“</div>}
-            <blockquote>{q}</blockquote>
-            <div className="who2"><div className="av">{initials(co)}</div><div><b>{co}</b><small>{ro}</small></div></div>
-          </article>
-        ))}
-      </Carousel>
-    </div></section>
+      <Head eb={eb} title={title} lead={lead || undefined} />
+    </div>
+      <div className="tmarq" data-r="">
+        <div className="tmarq-track" style={{ '--dur': `${base.length * 9}s` }}>
+          {base.map((it, k) => card(it, k, false))}
+          {base.map((it, k) => card(it, k, true))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -142,7 +152,7 @@ export function Cta({ title = 'Looking for growth? We help you as a Partner, not
   const unit = `${label.toUpperCase()} ✦ `;
   const ring = unit.repeat(Math.max(1, Math.round(42 / unit.length)));
   return (
-    <section className="ctx">
+    <CtaShell>
       <Strip items={CTA_STRIP_A} kind="a" />
       <div className="wrap ctx-in" data-r="">
         <div className="ctx-copy"><h2>{title}</h2><p>{text}</p></div>
@@ -159,7 +169,28 @@ export function Cta({ title = 'Looking for growth? We help you as a Partner, not
         </div>
       </div>
       <Strip items={CTA_STRIP_B} kind="b" />
-    </section>
+    </CtaShell>
+  );
+}
+
+// Illustrated service badge (gradient circle + orbit ring + label chip), used on the home "Our Services" cards.
+const BADGE_ICONS = {
+  'lead-generation': [<circle key="1" cx="11" cy="13" r="8" />, <circle key="2" cx="11" cy="13" r="4.5" />, <circle key="3" cx="11" cy="13" r="1.3" fill="currentColor" />, <path key="4" d="M12 12l8-8M16 4h4v4" />],
+  'b2b-content-syndication': [<path key="1" d="M3 4h8l3 3v13H3z" />, <path key="2" d="M11 4v3h3M6 11h5M6 14h5M6 17h3" />, <path key="3" d="M17.5 9.5a3.5 3.5 0 0 1 0 5M20 7a7 7 0 0 1 0 10" />],
+  'event-based-lead-generation': [<rect key="1" x="3" y="5" width="18" height="16" rx="2.5" />, <path key="2" d="M3 10h18M8 3v4M16 3v4" />, <path key="3" fill="currentColor" d="M12 12.5l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.2-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z" />],
+  'outbound-sales': [<path key="1" d="M4 14v-2a8 8 0 0 1 16 0v2" />, <rect key="2" x="3" y="13" width="4.5" height="7" rx="1.8" />, <rect key="3" x="16.5" y="13" width="4.5" height="7" rx="1.8" />, <path key="4" d="M19 20c0 1.4-1.8 2-4 2h-2" />],
+  'data-services': [<ellipse key="1" cx="11" cy="5" rx="7.5" ry="2.8" />, <path key="2" d="M3.5 5v6c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V5M3.5 11v6c0 1.6 3.4 2.8 7.5 2.8" />, <path key="3" d="M16 18l1.5 1.5 3-3.2" />],
+};
+const BADGE_CHIPS = { 'lead-generation': 'ICP', 'b2b-content-syndication': 'INTENT', 'event-based-lead-generation': 'LIVE', 'outbound-sales': 'SDR', 'data-services': 'VERIFIED' };
+export function ServiceBadge({ slug }) {
+  return (
+    <div className="sbadge" aria-hidden="true">
+      <span className="sbadge-ring" /><i className="sbadge-dot a" /><i className="sbadge-dot b" />
+      <span className="sbadge-core">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{BADGE_ICONS[slug]}</svg>
+      </span>
+      {BADGE_CHIPS[slug] && <span className="sbadge-chip">{BADGE_CHIPS[slug]}</span>}
+    </div>
   );
 }
 

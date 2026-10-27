@@ -1,5 +1,5 @@
 import Difference from '@/components/Difference';
-import { BtnP, BtnS, CardsGrid, Cta, Head, PageHero, Testimonials, Trusted } from '@/components/ui';
+import { BtnP, BtnS, CardsGrid, Cta, Head, PageHero, Trusted } from '@/components/ui';
 
 export const metadata = { title: 'Lead Generation', description: 'Sales qualified lead generation: vetted, verified leads aligned to your ICP and buying signals.' };
 
@@ -21,7 +21,6 @@ export default function Page() {
         ]} />
       </div></section>
       <Difference />
-      <Testimonials />
       <Cta />
     </>
   );

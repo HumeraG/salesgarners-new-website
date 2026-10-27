@@ -1,4 +1,4 @@
-import { BtnP, CardsGrid, Cta, Head, PageHero, StatBand, Testimonials, Trusted } from '@/components/ui';
+import { BtnP, CardsGrid, Cta, Head, PageHero, StatBand, Trusted } from '@/components/ui';
 
 export const metadata = { title: 'Data Services', description: 'Precision built, human verified B2B data that fuels every step of the buyer journey.' };
 
@@ -23,7 +23,6 @@ export default function Page() {
         <Head eb="The SalesGarners Impact" lead="Delivering measurable impact for modern B2B revenue teams - across industries, markets, and use cases." />
         <StatBand items={[['10', 'MN+', 'ICP-aligned contacts delivered'], ['120', '+', 'Industries supported'], ['60', '+', 'Countries covered'], ['100', '+', 'Long-term client engagements']]} />
       </div></section>
-      <Testimonials />
       <Cta label="Talk to an Expert" href="/contact-us" />
     </>
   );
