@@ -59,12 +59,17 @@ function milestones() {
   return list;
 }
 
-export default function OurStory() {
+// parts: which blocks to render. About uses intro/pillars/closing; Culture & Careers uses culture.
+const ALL = ['intro', 'jump', 'pillars', 'milestones', 'culture', 'closing'];
+
+export default function OurStory({ parts = ALL }) {
+  const has = p => parts.includes(p);
   const ms = milestones();
   const reels = STORY_REELS;
   return (
-    <section id="our-story" className={`sgos ${poppins.variable}`} aria-labelledby="sgos-title">
+    <section id={has('intro') ? 'our-story' : 'culture'} className={`sgos ${poppins.variable}`} aria-labelledby={has('intro') ? 'sgos-title' : 'sgos-culture-title'}>
       {/* A. Story introduction */}
+      {has('intro') && (<>
       <div className="sgos-wrap sgos-intro">
         <div className="sgos-intro__copy" data-sgos-reveal="">
           <p className="sgos-eyebrow">Our Journey</p>
@@ -81,15 +86,19 @@ export default function OurStory() {
           <div className="sgos-glass"><b>Since 2019</b><span>Pune, India</span></div>
         </div>
       </div>
+      </>)}
 
       {/* In-section index (jump links) */}
+      {has('jump') && (<>
       <div className="sgos-wrap">
         <nav className="sgos-jump" aria-label="Our story sections">
           {[['#sgos-pillars', 'Why, what & how'], ['#sgos-milestones', 'Milestones'], ['#sgos-culture', 'Culture & people']].map(([h, l]) => <a key={h} href={h}>{l}</a>)}
         </nav>
       </div>
+      </>)}
 
       {/* B. Why / What / How */}
+      {has('pillars') && (<>
       <div className="sgos-wrap" id="sgos-pillars">
         <ul className="sgos-pillars" role="list" aria-label="Why, what and how">
           <li className="sgos-pillar" data-sgos-reveal=""><span className="sgos-pillar__ic"><Svg n="heart" /></span><h3 className="sgos-label">Why we do it</h3><p>Help businesses find meaningful opportunities and build stronger connections with their audiences.</p></li>
@@ -97,8 +106,10 @@ export default function OurStory() {
           <li className="sgos-pillar" data-sgos-reveal=""><span className="sgos-pillar__ic"><Svg n="pulse" /></span><h3 className="sgos-label">How we do it</h3><p>Combine data-driven targeting, relevant content, audience engagement, and lead qualification to help businesses reach their goals.</p></li>
         </ul>
       </div>
+      </>)}
 
       {/* C. Timeline */}
+      {has('milestones') && (<>
       <div className="sgos-band" id="sgos-milestones">
         <div className="sgos-wrap sgos-tl-grid">
           <div className="sgos-tl-aside" data-sgos-reveal="">
@@ -129,12 +140,14 @@ export default function OurStory() {
           </ol>
         </div>
       </div>
+      </>)}
 
       {/* E. Culture and people */}
+      {has('culture') && (<>
       <div className="sgos-wrap sgos-culture" id="sgos-culture">
         <div className="sgos-head sgos-head--center" data-sgos-reveal="">
           <p className="sgos-eyebrow">Our Culture &amp; People</p>
-          <h3 className="sgos-h2">Behind Every Milestone, There’s a Team.</h3>
+          <h3 id="sgos-culture-title" className="sgos-h2">Behind Every Milestone, There’s a Team.</h3>
           <p>Festivals, traditional days, outings and Fun Fridays: the moments that make SalesGarners feel like SalesGarners.</p>
         </div>
         <div className="sgos-filters" role="group" aria-label="Filter the gallery">
@@ -171,8 +184,10 @@ export default function OurStory() {
         </ul>
         <p className="sgos-follow"><a className="sgos-link" href="https://www.instagram.com/salesgarners/" target="_blank" rel="noopener noreferrer">See more on Instagram @salesgarners <Svg n="out" size={16} /><span className="sgos-sr"> (opens in a new tab)</span></a></p>
       </div>
+      </>)}
 
       {/* F. Closing */}
+      {has('closing') && (<>
       <div className="sgos-wrap">
         <div className="sgos-close" data-sgos-reveal="">
           <div>
@@ -182,6 +197,7 @@ export default function OurStory() {
           <a className="sgos-btn" href="/contact-us">Get to Know SalesGarners <Svg n="arrow" size={18} /></a>
         </div>
       </div>
+      </>)}
 
       <dialog className="sgos-dialog" aria-labelledby="sgos-dtitle">
         <div className="sgos-dialog__bar"><b id="sgos-dtitle" data-sgos-dtitle="">Video</b><button type="button" data-sgos-close="" aria-label="Close video">✕</button></div>

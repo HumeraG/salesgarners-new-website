@@ -41,7 +41,7 @@ export default function About() {
         <MissionControl services={[...SG.services].sort((a, b) => (b.slug === 'lead-generation') - (a.slug === 'lead-generation'))} />
       </div></section>
 
-      <OurStory />
+      <OurStory parts={['intro', 'pillars', 'closing']} />
 
       <section className="sec"><div className="wrap">
         <Head eb="Leadership" title="Our Leadership Team" />

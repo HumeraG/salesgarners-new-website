@@ -14,7 +14,7 @@ export default function Footer() {
         <div><h4>Services</h4><ul>{SG.services.map(s => <li key={s.slug}><Link href={`/${s.slug}`}>{s.short}</Link></li>)}</ul></div>
         <div><h4>Navigate</h4><ul><li><Link href="/about">About</Link></li><li><Link href="/x-engage">X-Engage</Link></li><li><Link href="/contact-us">Contact</Link></li></ul></div>
         <div><h4>Resources</h4><ul><li><Link href="/blog">Blogs</Link></li><li><Link href="/audience-overview">Audience Overview</Link></li><li><Link href="/case-study">Case Study</Link></li><li><a href={LINKS.calc} target="_blank" rel="noopener noreferrer">Revenue Pipeline Calculator</a></li></ul></div>
-        <div><h4>Company</h4><ul><li><Link href="/careers">Careers</Link></li><li><Link href="/privacy-policy">Privacy Policy</Link></li><li><Link href="/terms-conditions">Terms &amp; Conditions</Link></li></ul></div>
+        <div><h4>Company</h4><ul><li><Link href="/careers">Culture &amp; Careers</Link></li><li><Link href="/privacy-policy">Privacy Policy</Link></li><li><Link href="/terms-conditions">Terms &amp; Conditions</Link></li></ul></div>
       </div>
       <div className="fbot">
         <span>© {new Date().getFullYear()} Salesgarners. All rights reserved <CookieSettingsLink /></span>

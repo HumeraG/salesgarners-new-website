@@ -5,8 +5,9 @@ import JobFilters from '@/components/client/JobFilters';
 import { CAREERS } from '@/lib/content';
 import { getOpenJobs, JOB_TYPES, WORK_MODES } from '@/lib/data';
 import { Arrow, Head, PageHero } from '@/components/ui';
+import OurStory from '@/components/OurStory';
 
-export const metadata = { title: 'Careers', description: 'Open roles at SalesGarners, Pune. Join our demand generation, data and technology teams.' };
+export const metadata = { title: 'Culture & Careers', description: 'Life at SalesGarners and open roles in Pune. Join our demand generation, data and technology teams.' };
 export const revalidate = 60;
 
 export default async function Careers() {
@@ -31,8 +32,8 @@ export default async function Careers() {
 
   return (
     <>
-      <PageHero shape="briefcase" chip={['Careers','Join the team']} eb={CAREERS.eyebrow} title={CAREERS.title} lead={CAREERS.lead}>
-        <a className="btn p" href="#open-roles">See open roles <Arrow /></a>
+      <PageHero shape="briefcase" chip={['Culture & Careers','Join the team']} eb={CAREERS.eyebrow} title={CAREERS.title} lead={CAREERS.lead}>
+        <a className="btn p" href="#open-roles">See open roles <Arrow /></a><a className="btn s" href="#culture">See our culture <Arrow /></a>
       </PageHero>
 
       <section className="sec alt"><div className="wrap">
@@ -42,6 +43,8 @@ export default async function Careers() {
           ))}
         </div>
       </div></section>
+
+      <OurStory parts={['culture']} />
 
       <section className="sec" id="open-roles"><div className="wrap">
         <Head eb={`${jobs.length} open ${jobs.length === 1 ? 'role' : 'roles'}`} title="Open roles" />

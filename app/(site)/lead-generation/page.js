@@ -1,3 +1,4 @@
+import PipelineTank from '@/components/client/PipelineTank';
 import Difference from '@/components/Difference';
 import { BtnP, BtnS, CardsGrid, Cta, Head, PageHero, Trusted } from '@/components/ui';
 
@@ -6,7 +7,7 @@ export const metadata = { title: 'Lead Generation', description: 'Sales qualifie
 export default function Page() {
   return (
     <>
-      <PageHero shape="funnel" chip={['ICP matched','Human verified leads']} eb="Sales Qualified Lead Generation" title={<>Fuel Your Pipeline with Targeted Leads That <span className="gt">Actually Convert</span></>} lead="We help you connect with the right buyers at the right time – no noise, no guesswork. Our leads are vetted, verified, and aligned to your ICP and buying signals. You get pipeline ready prospects that engage and convert faster. Less chasing, more closing.">
+      <PageHero visual={<PipelineTank />} eb="Sales Qualified Lead Generation" title={<>Fuel Your Pipeline with Targeted Leads That <span className="gt">Actually Convert</span></>} lead="We help you connect with the right buyers at the right time – no noise, no guesswork. Our leads are vetted, verified, and aligned to your ICP and buying signals. You get pipeline ready prospects that engage and convert faster. Less chasing, more closing.">
         <BtnP>Book a Demo</BtnP><BtnS href="/contact-us">Talk to an Expert</BtnS>
       </PageHero>
       <Trusted />
