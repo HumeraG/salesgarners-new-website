@@ -1,3 +1,8 @@
+import PricingPasses from '@/components/client/PricingPasses';
+import FitCheck from '@/components/client/FitCheck';
+import ForecastGauge from '@/components/client/ForecastGauge';
+import NoiseSignal from '@/components/client/NoiseSignal';
+import OutboundPanels from '@/components/client/OutboundPanels';
 import { Icon } from '@/components/Icon';
 import { LINKS } from '@/lib/content';
 import FaqConsole from '@/components/client/FaqConsole';
@@ -23,28 +28,18 @@ const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainE
 export default function Page() {
   return (
     <>
-      <PageHero shape="plane" chip={['Outbound','Qualified sales meetings']} eb="Outbound Sales Program" title={<>Predictable Pipeline. Qualified Sales Meetings. <span className="gt">Real Revenue.</span></>} lead="SalesGarners helps SaaS & tech companies scale pipeline fast by generating high‑intent sales meetings and revenue opportunities through a multi channel outbound engine powered by intent data and conversion strategy.">
+      <PageHero visual={<OutboundPanels />} chip={['Outbound','Qualified sales meetings']} eb="Outbound Sales Program" title={<>Predictable Pipeline. Qualified Sales Meetings. <span className="gt">Real Revenue.</span></>} lead="SalesGarners helps SaaS & tech companies scale pipeline fast by generating high‑intent sales meetings and revenue opportunities through a multi channel outbound engine powered by intent data and conversion strategy.">
         <BtnP href={LINKS.calc}>Get Your Pipeline Forecast</BtnP>
       </PageHero>
       <Trusted />
 
       <section className="sec"><div className="wrap">
-        <Head title="Built for companies that" />
-        <div className="g3">
-          {['Have funding but lack consistent pipeline', 'Want to scale outbound without building an SDR team', 'Are tired of low quality leads and poor conversions'].map((t, i) => (
-            <article className="card step" data-r="" key={t}><span className="n">0{i + 1}</span><h3 className="h3">{t}</h3></article>
-          ))}
-        </div>
+        <FitCheck />
       </div></section>
 
       <section className="sec alt"><div className="wrap">
         <Head title="Why Pipeline Feels Unpredictable" lead="Without a connected system, pipeline stays a guessing game until now." />
-        <CardsGrid cols={2} icons={['users', 'layers', 'activity', 'trending']} items={[
-          ['Sales Struggles to Convert', 'Your sales reps are drowning in unqualified leads instead of closing deals. Without a reliable lead qualification process, every rep becomes their own filter — spending hours chasing prospects who were never sales ready to begin with. This manual qualification bottleneck slows down your sales cycle, burns valuable selling time, and quietly kills conversion rates before deals even reach the negotiation stage.'],
-          ['Marketing Generates MQLs', 'Your marketing campaigns are driving traffic and form fills, but lead volume means nothing without lead quality. Hundreds of MQLs flood in every month, yet without proper lead scoring, most never convert into sales qualified opportunities. The disconnect between marketing output and sales ready pipeline is exactly why so many B2B teams struggle to turn campaign spend into real revenue growth.'],
-          ['Pipeline Becomes Unpredictable', 'An inconsistent lead flow means an inconsistent sales pipeline. Deals stall in random stages, follow ups fall through the cracks, and reps end up forecasting on gut feeling instead of real time pipeline data. For any B2B sales team trying to scale, this kind of pipeline unpredictability makes it nearly impossible to trust your own numbers — let alone plan for growth.'],
-          ['Revenue Forecasting Breaks Down', 'When your pipeline isn\'t feeding accurate data into your revenue targets, forecasting becomes a shot in the dark. Leadership loses real time visibility into what\'s actually closing, budgets get built on assumptions, and hiring plans are based on hope rather than data. Fixing revenue forecasting starts with fixing the pipeline that feeds it — and that starts with a connected, predictable sales system.'],
-        ]} />
+        <ForecastGauge />
       </div></section>
 
       <section className="sec"><div className="wrap split">
@@ -67,19 +62,13 @@ export default function Page() {
 
       <section className="sec"><div className="wrap">
         <Head title="Flexible Pricing for Every Sales Growth Stage" lead="Select the pricing model that aligns with your sales goals and growth strategy." />
-        <div className="g2" style={{ maxWidth: 860, marginInline: 'auto' }}>
-          {[['Retainer plans for', 'predictable pipeline', 'calendar'], ['CPL model for performance', 'based campaigns', 'target']].map(([a, b, i]) => (
-            <article className="card" style={{ padding: 40 }} data-r="" key={a}><div className="it"><Icon name={i} size={24} /></div><h3 className="h3" style={{ fontSize: 28 }}>{a} <span className="gt">{b}</span></h3></article>
-          ))}
-        </div>
+        <PricingPasses />
         <div className="btns" style={{ justifyContent: 'center', marginTop: 36 }}><BtnP>Book a Strategy Call</BtnP></div>
       </div></section>
 
       <section className="sec alt"><div className="wrap">
         <Head title="Most outbound agencies stop here." lead="More emails + more calls = more noise" />
-        <Compare leftTitle="TRADITIONAL OUTBOUND" rightTitle="SALESGARNERS"
-          left={['Mass emails to huge lists', 'Random cold calls', 'Generic lead data', 'No visibility on buyer intent', 'Low reply and meeting rates', 'Focus on activity, not results']}
-          right={['Intent driven outreach', 'Targeted high intent prospects', 'Verified and enriched data', 'Real time intent signals', 'Higher reply and meeting rates', 'Focus on qualified opportunities']} />
+        <NoiseSignal />
         <div style={{ marginTop: 64 }}>
           <Head eb="We go one step further" />
           <CardsGrid cols={3} icons={['eye', 'database', 'clock']} items={[["Who's engaging", 'We identify the right accounts showing real interest in your solution.'], ['Verified intent data', 'We use advanced intent signals to find buyers actively researching solutions like yours.'], ['Sales-ready timing', 'We engage when buyers are ready, so your team talks to real opportunities.']]} />

@@ -7,6 +7,8 @@ export const metadata = { title: 'Publications', description: 'Six independent B
 // [grid-column, grid-row] for the bento tiles on desktop
 const POS = { techmediaglobal: ['1 / span 2', '1 / span 2'], martech360hub: ['3 / span 2', '1'], hrtech360hub: ['3', '2'], fintech360hub: ['4', '2'], salestech360hub: ['2', '3'], startup360hub: ['3 / span 2', '3'] };
 const WIDE = new Set(['techmediaglobal', 'martech360hub', 'startup360hub']);
+// Homepage screenshots shown inside each tile with space around them (public/publications/screens/<slug>.webp)
+const SHOTS = new Set(['techmediaglobal', 'martech360hub', 'fintech360hub', 'startup360hub']);
 
 const Logo = ({ slug, kind, name }) => (
   <>
@@ -32,8 +34,10 @@ export default function Page() {
           {pubs.map(p => {
             const big = WIDE.has(p.slug); const hero = p.slug === 'techmediaglobal'; const [gc, gr] = POS[p.slug];
             return (
-              <a key={p.slug} href={`#${p.slug}`} className={`pp-tile ${hero ? 'hero' : ''}`} style={{ '--pcl': p.cl, '--pcd': p.cd, '--gc': gc, '--gr': gr }}>
+              <a key={p.slug} href={`#${p.slug}`} className={`pp-tile ${hero ? 'hero' : ''}${SHOTS.has(p.slug) ? ' has-shot' : ''}`} style={{ '--pcl': p.cl, '--pcd': p.cd, '--gc': gc, '--gr': gr }}>
+                
                 <div className="top"><span className="mk"><Logo slug={p.slug} kind="mark" name="" /></span><span className="dom">{p.domain}</span></div>
+                {SHOTS.has(p.slug) && <span className="pp-frame" aria-hidden="true"><img src={`/publications/screens/${p.slug}.webp`} alt="" loading="lazy" decoding="async" /></span>}
                 <div className="bot">
                   <h2>{p.name}</h2>
                   <p>{big ? p.d[1] : p.d[0]}</p>

@@ -1,3 +1,4 @@
+import EventJourney from '@/components/client/EventJourney';
 import Difference from '@/components/Difference';
 import { BtnP, CardsGrid, Cta, Head, NumberedSteps, PageHero } from '@/components/ui';
 
@@ -6,7 +7,7 @@ export const metadata = { title: 'Event-Based Lead Generation', description: 'Tu
 export default function Page() {
   return (
     <>
-      <PageHero shape="calendar" chip={['Event leads','Pre-booked meetings']} eb="Event-Based Lead Generation" title={<>Turn Every Event into a <span className="gt">Revenue Opportunity</span></>} lead="Industry events are more than networking , they’re where buying decisions are shaped. With Salesgarners, you don’t just attend or host events, you maximize them. We help you connect with the right decision makers, capture intent rich leads, and turn conversations into measurable pipeline growth.">
+      <PageHero visual={<EventJourney />} eb="Event-Based Lead Generation" title={<>Turn Every Event into a <span className="gt">Revenue Opportunity</span></>} lead="Industry events are more than networking , they’re where buying decisions are shaped. With Salesgarners, you don’t just attend or host events, you maximize them. We help you connect with the right decision makers, capture intent rich leads, and turn conversations into measurable pipeline growth.">
         <BtnP>Book a Demo</BtnP>
       </PageHero>
       <section className="sec alt"><div className="wrap">

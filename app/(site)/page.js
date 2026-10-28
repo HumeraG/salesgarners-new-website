@@ -56,7 +56,7 @@ export default async function Home() {
       </div></section>
 
       <DatabaseSection />
-      <Publications />
+      <Publications dark />
 
       <section className="sec" style={{ overflow: 'hidden' }}>
         <div className="glow a" style={{ left: '30%', top: 0, opacity: 0.6 }} />

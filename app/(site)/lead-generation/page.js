@@ -1,3 +1,4 @@
+import PrecisionTarget from '@/components/client/PrecisionTarget';
 import PipelineTank from '@/components/client/PipelineTank';
 import Difference from '@/components/Difference';
 import { BtnP, BtnS, CardsGrid, Cta, Head, PageHero, Trusted } from '@/components/ui';
@@ -13,6 +14,7 @@ export default function Page() {
       <Trusted />
       <section className="sec alt"><div className="wrap">
         <Head eb="Why our lead gen drives results that actually close" title="Built for Pipeline. Tuned for Revenue" />
+        <PrecisionTarget />
         <Head eb="What you get" title="Leads That Convert, Not Just Click" />
         <CardsGrid cols={2} icons={['file', 'layers', 'check', 'badge']} items={[
           ['Content Syndication', 'Turn high-quality content into high-intent leads. We place your content in front of in market buyers actively researching solutions like yours. Build awareness, generate top funnel demand, and drive consistent lead flow minus the guesswork.'],

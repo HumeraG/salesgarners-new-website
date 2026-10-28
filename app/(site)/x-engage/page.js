@@ -1,3 +1,4 @@
+import IntentGlobe from '@/components/client/IntentGlobe';
 import { LINKS } from '@/lib/content';
 import { BtnP, BtnS, CardsGrid, Cta, Head, PageHero, Signals, Testimonials } from '@/components/ui';
 
@@ -6,7 +7,7 @@ export const metadata = { title: 'X-Engage', description: 'X-Engage reveals cont
 export default function Page() {
   return (
     <>
-      <PageHero shape="x" chip={['X-Engage','Intent-driven engagement']} eb="X-Engage" title={<>Transform Content Engagement into <span className="gt">Intelligent Demand Generation</span></>} lead="B2B tech teams invest heavily in thought leadership content ebooks, reports, and guides but real buyer intent often remains invisible. X-Engage reveals contact level engagement, helping you identify high intent prospects faster, expand brand reach, and turn early interest into sales ready demand.">
+      <PageHero visual={<IntentGlobe />} chip={['X-Engage','Intent-driven engagement']} eb="X-Engage" title={<>Transform Content Engagement into <span className="gt">Intelligent Demand Generation</span></>} lead="B2B tech teams invest heavily in thought leadership content ebooks, reports, and guides but real buyer intent often remains invisible. X-Engage reveals contact level engagement, helping you identify high intent prospects faster, expand brand reach, and turn early interest into sales ready demand.">
         <BtnP>Request Your Demo</BtnP><BtnS href={LINKS.portal}>X-Engage Portal</BtnS>
       </PageHero>
       <section className="sec alt"><div className="wrap">

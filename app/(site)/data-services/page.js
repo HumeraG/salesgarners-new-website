@@ -1,3 +1,5 @@
+import DataRail from '@/components/client/DataRail';
+import DataCleanTable from '@/components/client/DataCleanTable';
 import { BtnP, CardsGrid, Cta, Head, PageHero, StatBand, Trusted } from '@/components/ui';
 
 export const metadata = { title: 'Data Services', description: 'Precision built, human verified B2B data that fuels every step of the buyer journey.' };
@@ -5,12 +7,13 @@ export const metadata = { title: 'Data Services', description: 'Precision built,
 export default function Page() {
   return (
     <>
-      <PageHero shape="database" chip={['B2B data','Verified & enriched']} eb="B2B Data Services" title={<>Power Your Demand Gen with <span className="gt">Smarter B2B Data</span></>} lead="When data works for you, campaigns don’t just perform they convert. We give your marketing and sales teams access to precision built, human verified insights that fuel every step of the buyer journey. From identifying your ideal customers to enriching and scoring prospect data in real-time, we help you make better decisions, run sharper campaigns, and generate more qualified opportunities.">
+      <PageHero visual={<DataCleanTable />} chip={['B2B data','Verified & enriched']} eb="B2B Data Services" title={<>Power Your Demand Gen with <span className="gt">Smarter B2B Data</span></>} lead="When data works for you, campaigns don’t just perform they convert. We give your marketing and sales teams access to precision built, human verified insights that fuel every step of the buyer journey. From identifying your ideal customers to enriching and scoring prospect data in real-time, we help you make better decisions, run sharper campaigns, and generate more qualified opportunities.">
         <BtnP href="/contact-us">Talk to an Expert</BtnP>
       </PageHero>
       <Trusted />
       <section className="sec alt"><div className="wrap">
         <Head title="Turning Insight-Rich Data into Real Pipeline Impact" />
+        <DataRail />
         <Head eb="How our data services get you better leads" title="Purpose-Built B2B Data That Fuels Growth Across Every Funnel Stage" />
         <CardsGrid cols={2} icons={['database', 'sparkle', 'layers', 'shield']} items={[
           ['Build Stronger Campaigns with Custom, Always-Fresh Data', 'Every business is different , your data should be too. Our bespoke B2B data solutions combine deep research, expert validation, and AI driven enrichment so your teams always engage the right contacts with the right messaging at the right time.'],

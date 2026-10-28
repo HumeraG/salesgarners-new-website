@@ -85,3 +85,17 @@ html[data-theme="light"] .pp-list .acts .v{color:#fff}
   .pp-list dl{grid-template-columns:1fr;gap:4px 0}
   .pp-list dt{padding-top:10px}
 }
+
+/* Homepage screenshot fills the whole tile; name, logo and text sit on top of it */
+/* Homepage screenshot fills the whole tile; logo, name, description and tags sit on top of it */
+.pp-tile .pp-frame{position:absolute;inset:0;z-index:0;display:block;overflow:hidden;border-radius:inherit;pointer-events:none}
+.pp-tile .pp-frame img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transform:scale(1.01);transition:transform .6s var(--ease)}
+.pp-tile .pp-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,26,.6) 0%,rgba(6,8,26,0) 22%,rgba(6,8,26,0) 38%,rgba(6,8,26,.75) 62%,rgba(6,8,26,.96) 100%)}
+.pp-tile.has-shot>.top,.pp-tile.has-shot>.bot{position:relative;z-index:2}
+.pp-tile.has-shot .bot p{color:#F4F3FF}
+.pp-tile.has-shot .dom{padding:3px 8px;border-radius:6px;background:rgba(6,8,26,.8)}
+.pp-tile.has-shot .mk{display:inline-flex;border-radius:50%;background:rgba(6,8,26,.8)}
+.pp-tile.has-shot .chips span{background:rgba(6,8,26,.6)}
+.pp-tile.has-shot:hover .pp-frame img{transform:scale(1.05)}
+html[data-theme="light"] .pp-tile.has-shot h2{text-shadow:0 1px 0 rgba(255,255,255,.2)}
+@media (prefers-reduced-motion:reduce){.pp-tile .pp-frame img{transition:none}}

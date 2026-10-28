@@ -194,9 +194,9 @@ export function ServiceBadge({ slug }) {
   );
 }
 
-export function Publications() {
+export function Publications({ dark = false }) {
   return (
-    <section className="sec light"><div className="wrap">
+    <section className={`sec light${dark ? ' pubd' : ''}`}><div className="wrap">
       <Head title="Our publications" lead={SG.pubText} />
       <Newsstand publications={SG.publications} />
     </div></section>
