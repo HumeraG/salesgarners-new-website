@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getBlogs } from '@/lib/data';
 import { BtnP, Cta, PageHero } from '@/components/ui';
+import BlogWriter from '@/components/client/BlogWriter';
 
 export const metadata = { title: 'Blogs', description: 'Insights on B2B demand generation, content syndication and buyer intent from SalesGarners.' };
 export const revalidate = 300;
@@ -12,7 +13,7 @@ export default async function Blog() {
   const posts = await getBlogs();
   return (
     <>
-      <PageHero shape="book" chip={['Resources','Latest insights']} eb="Resources" title="Blogs" lead="Ideas and playbooks on demand generation, content syndication and intent-based lead generation for B2B tech teams."><BtnP href="/pilot-campaign">Start a Free Pilot</BtnP></PageHero>
+      <PageHero visual={<BlogWriter titles={posts.slice(0, 3).map(p => p.title)} />} chip={['Resources','Latest insights']} eb="Resources" title="Blogs" lead="Ideas and playbooks on demand generation, content syndication and intent-based lead generation for B2B tech teams."><BtnP href="/pilot-campaign">Start a Free Pilot</BtnP></PageHero>
       <section className="sec" style={{ paddingTop: 20 }}><div className="wrap">
         {posts.length === 0 ? <p className="lead" style={{ textAlign: 'center', marginInline: 'auto' }}>No posts yet. Add the first one from the admin panel.</p> : (
           <div className="g3">
